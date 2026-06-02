@@ -1,0 +1,29 @@
+[project]
+name = "tokenwatch"
+version = "0.1.0"
+description = "A modern, playful TUI that tracks your LLM token usage and cost in real time — drop it in front of any OpenAI-compatible API."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "camelyello" }]
+keywords = ["llm", "openai", "tokens", "cost", "tui", "observability", "proxy"]
+dependencies = [
+    "textual>=0.80",
+    "starlette>=0.37",
+    "uvicorn>=0.30",
+    "httpx>=0.27",
+]
+
+[project.scripts]
+tokenwatch = "tokenwatch.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/camelyello-88/tokenwatch"
+Repository = "https://github.com/camelyello-88/tokenwatch"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tokenwatch"]
