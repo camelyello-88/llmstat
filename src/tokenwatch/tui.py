@@ -69,8 +69,8 @@ class Tokenwatch(App):
     #title-feed {{ text-style: bold; padding: 0 1; }}
     DataTable {{ height: 1fr; }}
     DataTable > .datatable--header {{ text-style: bold; }}
-    #left {{ width: 2fr; }}
-    #right {{ width: 3fr; margin-left: 1; }}
+    #left {{ width: 4fr; }}
+    #right {{ width: 5fr; margin-left: 1; }}
 
     /* ---------- LIGHT theme (default) ---------- */
     Screen {{ background: #faf7ff; }}

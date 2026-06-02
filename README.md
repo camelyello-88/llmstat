@@ -10,6 +10,15 @@ live token usage, cost, and latency. No SDK changes. No cloud. No account.
 
 `pip install tokenwatch` → point your base URL at it → watch the numbers move.
 
+<table>
+<tr>
+<td align="center"><b>Light</b><br><img src="docs/light.svg" alt="tokenwatch light theme" width="420"></td>
+<td align="center"><b>Dark</b><br><img src="docs/dark.svg" alt="tokenwatch dark theme" width="420"></td>
+</tr>
+</table>
+
+<sub>Two pastel themes — toggle with <code>d</code>. Today / all-time with <code>t</code>.</sub>
+
 </div>
 
 ---
