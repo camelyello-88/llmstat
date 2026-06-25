@@ -13,18 +13,21 @@ from typing import Dict, Optional, Tuple
 # (input_per_1m, output_per_1m) in USD.
 _DEFAULT_PRICING: Dict[str, Tuple[float, float]] = {
     # OpenAI
-    "gpt-4o": (2.50, 10.00),
-    "gpt-4o-mini": (0.15, 0.60),
+    "gpt-5": (1.25, 10.00),
+    "gpt-5-mini": (0.25, 2.00),
     "gpt-4.1": (2.00, 8.00),
     "gpt-4.1-mini": (0.40, 1.60),
-    "gpt-4.1-nano": (0.10, 0.40),
+    "gpt-4o": (2.50, 10.00),
+    "gpt-4o-mini": (0.15, 0.60),
     "o3": (2.00, 8.00),
     "o4-mini": (1.10, 4.40),
     # Anthropic
+    "claude-opus-4-1": (15.00, 75.00),
+    "claude-sonnet-4-5": (3.00, 15.00),
+    "claude-haiku-4-5": (1.00, 5.00),
     "claude-3-5-sonnet": (3.00, 15.00),
     "claude-3-5-haiku": (0.80, 4.00),
-    "claude-3-opus": (15.00, 75.00),
-    # Open models (typical hosted pricing)
+    # Open / self-hosted models (typical hosted pricing; self-host = override to 0)
     "deepseek-chat": (0.27, 1.10),
     "deepseek-reasoner": (0.55, 2.19),
     "llama-3.3-70b": (0.59, 0.79),

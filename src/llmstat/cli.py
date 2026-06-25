@@ -36,8 +36,8 @@ def _cmd_demo(args: argparse.Namespace) -> int:
     """Seed the db with believable traffic so you can see the dashboard now."""
     store = Store(args.db)
     models = [
-        ("gpt-4o", 0.4), ("gpt-4o-mini", 0.9), ("claude-3-5-sonnet", 0.3),
-        ("deepseek-chat", 0.6), ("o4-mini", 0.2),
+        ("gpt-5", 0.3), ("gpt-5-mini", 0.9), ("claude-sonnet-4-5", 0.4),
+        ("deepseek-reasoner", 0.5), ("llama-3.3-70b", 0.7), ("qwen-2.5-72b", 0.5),
     ]
     n = args.count
     now = time.time()
