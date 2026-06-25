@@ -1,6 +1,6 @@
 [project]
 name = "llmstat"
-version = "0.1.0"
+version = "0.1.1"
 description = "CLI-first, local LLM cost tracker for indie devs — drop it in front of any OpenAI-compatible API and watch token usage and spend in real time. No cloud, no signup."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -13,6 +13,9 @@ dependencies = [
     "uvicorn>=0.30",
     "httpx>=0.27",
 ]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
 
 [project.scripts]
 llmstat = "llmstat.cli:main"

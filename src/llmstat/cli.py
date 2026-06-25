@@ -5,6 +5,7 @@ import argparse
 import random
 import sys
 import time
+from datetime import datetime
 
 from .db import DEFAULT_DB_PATH, Store
 from .pricing import cost_for
@@ -29,6 +30,52 @@ def _cmd_dash(args: argparse.Namespace) -> int:
 
     store = Store(args.db)
     run(store)
+    return 0
+
+
+def _fmt_money(v: float) -> str:
+    if v >= 1:
+        return f"${v:,.2f}"
+    if v >= 0.01:
+        return f"${v:.3f}"
+    return f"{v * 100:.2f}¢"
+
+
+def _fmt_compact(n: float) -> str:
+    n = float(n)
+    for unit in ("", "K", "M", "B"):
+        if abs(n) < 1000:
+            return f"{n:.0f}{unit}" if unit == "" else f"{n:.1f}{unit}"
+        n /= 1000
+    return f"{n:.1f}T"
+
+
+def _start_of_today() -> float:
+    now = datetime.now()
+    return datetime(now.year, now.month, now.day).timestamp()
+
+
+def _status_line(store: Store) -> str:
+    t = store.totals(_start_of_today())
+    return (
+        f"\U0001f441️  llmstat · today   "
+        f"{_fmt_money(t['cost'])} · {_fmt_compact(t['tokens'])} tok · "
+        f"{int(t['calls'])} calls · {int(t['avg_latency'])}ms avg"
+    )
+
+
+def _cmd_top(args: argparse.Namespace) -> int:
+    """A one-line live status bar — great for a tmux pane or shell prompt."""
+    store = Store(args.db)
+    if not args.watch:
+        print(_status_line(store))
+        return 0
+    try:
+        while True:
+            print("\r\033[K" + _status_line(store), end="", flush=True)
+            time.sleep(args.watch)
+    except KeyboardInterrupt:
+        print()
     return 0
 
 
@@ -79,6 +126,11 @@ def main(argv=None) -> int:
 
     p_dash = sub.add_parser("dash", help="open the live dashboard")
     p_dash.set_defaults(func=_cmd_dash)
+
+    p_top = sub.add_parser("top", help="print a one-line status bar (today's spend)")
+    p_top.add_argument("--watch", type=float, default=0,
+                       help="refresh every N seconds instead of printing once")
+    p_top.set_defaults(func=_cmd_top)
 
     p_demo = sub.add_parser("demo", help="seed sample data to preview the dashboard")
     p_demo.add_argument("--count", type=int, default=120)

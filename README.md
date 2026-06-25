@@ -2,6 +2,10 @@
 
 # 👁️ llmstat
 
+[![PyPI](https://img.shields.io/pypi/v/llmstat.svg)](https://pypi.org/project/llmstat/)
+[![CI](https://github.com/camelyello-88/llmstat/actions/workflows/ci.yml/badge.svg)](https://github.com/camelyello-88/llmstat/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 ### See what your LLM calls *actually* cost — in real time.
 
 A modern, playful terminal dashboard that sits in front of **any OpenAI-compatible API**
@@ -48,6 +52,7 @@ pip install llmstat
 ```bash
 llmstat demo      # seed some realistic sample traffic
 llmstat dash      # open the dashboard
+llmstat top       # or just a one-line status bar
 ```
 
 Press `t` to flip between **today** and **all-time**, `r` to refresh, `q` to quit.
@@ -69,7 +74,7 @@ from openai import OpenAI
 
 client = OpenAI(base_url="http://127.0.0.1:8787/v1")  # was: the real URL
 client.chat.completions.create(
-    model="gpt-4o-mini",
+    model="gpt-5-mini",
     messages=[{"role": "user", "content": "hi"}],
 )
 ```
@@ -92,7 +97,7 @@ handy when one machine drives several apps.
 Models change prices constantly. Drop a `~/.llmstat/pricing.json` to override:
 
 ```json
-{ "my-self-hosted-llama": [0.0, 0.0], "gpt-4o": [2.50, 10.00] }
+{ "my-self-hosted-llama": [0.0, 0.0], "gpt-5.5-pro": [2.50, 15.00] }
 ```
 
 Values are USD per **1M** tokens: `[input, output]`.
@@ -111,10 +116,10 @@ buffered to disk except the counts you see.
 
 ## Roadmap
 
+- [x] `llmstat top` — a one-line live status bar (`--watch` to refresh)
 - [ ] Budgets & alerts (warn at $X/day)
 - [ ] Export to CSV / Prometheus
 - [ ] Per-project & per-key breakdown views
-- [ ] `llmstat top` — a one-line live status bar
 
 Ideas and PRs welcome — see an issue you'd like? Open one.
 

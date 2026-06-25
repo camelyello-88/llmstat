@@ -36,9 +36,10 @@ def _extract_usage(payload: dict) -> Optional[dict]:
     return None
 
 
-def build_app(upstream: str, store: Store) -> Starlette:
+def build_app(upstream: str, store: Store, client: Optional[httpx.AsyncClient] = None) -> Starlette:
     upstream = upstream.rstrip("/")
-    client = httpx.AsyncClient(base_url=upstream, timeout=httpx.Timeout(600.0))
+    # `client` is injectable so tests can supply an httpx.MockTransport.
+    client = client or httpx.AsyncClient(base_url=upstream, timeout=httpx.Timeout(600.0))
 
     async def proxy(request: Request) -> Response:
         body = await request.body()
