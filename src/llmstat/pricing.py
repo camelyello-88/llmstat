@@ -1,7 +1,7 @@
 """Model pricing table (USD per 1M tokens).
 
 Prices are best-effort and easy to extend — edit this dict or override per-model
-with a `~/.tokenwatch/pricing.json` file. We never hardcode anything we can't
+with a `~/.llmstat/pricing.json` file. We never hardcode anything we can't
 let the user correct, because pricing changes constantly.
 """
 from __future__ import annotations
@@ -31,7 +31,7 @@ _DEFAULT_PRICING: Dict[str, Tuple[float, float]] = {
     "qwen-2.5-72b": (0.40, 0.40),
 }
 
-_USER_PRICING_PATH = os.path.expanduser("~/.tokenwatch/pricing.json")
+_USER_PRICING_PATH = os.path.expanduser("~/.llmstat/pricing.json")
 
 
 def _load_user_pricing() -> Dict[str, Tuple[float, float]]:

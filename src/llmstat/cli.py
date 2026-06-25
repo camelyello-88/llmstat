@@ -1,4 +1,4 @@
-"""tokenwatch command line: `serve` the proxy, `dash` the TUI, `demo` to try it."""
+"""llmstat command line: `serve` the proxy, `dash` the TUI, `demo` to try it."""
 from __future__ import annotations
 
 import argparse
@@ -17,7 +17,7 @@ def _cmd_serve(args: argparse.Namespace) -> int:
 
     store = Store(args.db)
     app = build_app(args.upstream, store)
-    print(f"\U0001f441️  tokenwatch proxy -> {args.upstream}")
+    print(f"\U0001f441️  llmstat proxy -> {args.upstream}")
     print(f"   point your client base_url at: http://{args.host}:{args.port}/v1")
     print(f"   writing usage to: {args.db}\n")
     uvicorn.run(app, host=args.host, port=args.port, log_level="warning")
@@ -58,13 +58,13 @@ def _cmd_demo(args: argparse.Namespace) -> int:
             ),
         )
     store._conn.commit()
-    print(f"Seeded {n} demo requests. Now run:  tokenwatch dash")
+    print(f"Seeded {n} demo requests. Now run:  llmstat dash")
     return 0
 
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
-        prog="tokenwatch",
+        prog="llmstat",
         description="See what your LLM calls actually cost, in real time.",
     )
     parser.add_argument("--db", default=DEFAULT_DB_PATH, help="path to the usage database")

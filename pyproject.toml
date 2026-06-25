@@ -1,7 +1,7 @@
 [project]
-name = "tokenwatch"
+name = "llmstat"
 version = "0.1.0"
-description = "A modern, playful TUI that tracks your LLM token usage and cost in real time — drop it in front of any OpenAI-compatible API."
+description = "CLI-first, local LLM cost tracker for indie devs — drop it in front of any OpenAI-compatible API and watch token usage and spend in real time. No cloud, no signup."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
@@ -15,15 +15,15 @@ dependencies = [
 ]
 
 [project.scripts]
-tokenwatch = "tokenwatch.cli:main"
+llmstat = "llmstat.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/camelyello-88/tokenwatch"
-Repository = "https://github.com/camelyello-88/tokenwatch"
+Homepage = "https://github.com/camelyello-88/llmstat"
+Repository = "https://github.com/camelyello-88/llmstat"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/tokenwatch"]
+packages = ["src/llmstat"]

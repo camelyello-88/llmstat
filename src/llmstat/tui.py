@@ -53,7 +53,7 @@ class StatCard(Static):
 _INK = "#3b3654"
 _INK_DARK = "#ece9ff"
 
-class Tokenwatch(App):
+class Llmstat(App):
     CSS = f"""
     /* ---------- shared layout ---------- */
     #cards {{ height: 7; padding: 1 1 0 1; }}
@@ -146,7 +146,7 @@ class Tokenwatch(App):
         yield Footer()
 
     def on_mount(self) -> None:
-        self.title = "tokenwatch"
+        self.title = "llmstat"
         self.sub_title = "today"
         models = self.query_one("#models", DataTable)
         models.add_columns("model", "calls", "tokens", "cost")
@@ -200,4 +200,4 @@ class Tokenwatch(App):
 
 
 def run(store: Store) -> None:
-    Tokenwatch(store).run()
+    Llmstat(store).run()

@@ -1,6 +1,6 @@
 """A transparent OpenAI-compatible proxy that records token usage.
 
-Point your client's base_url at tokenwatch instead of the real API; we forward
+Point your client's base_url at llmstat instead of the real API; we forward
 every request upstream untouched, then read the `usage` block out of the
 response (works for both plain JSON and streamed SSE with usage enabled).
 """
@@ -25,8 +25,8 @@ _STRIP_RESPONSE_HEADERS = {"content-length", "content-encoding", "transfer-encod
 
 
 def _project_from(request: Request) -> Optional[str]:
-    """Let users tag traffic via an X-Tokenwatch-Project header."""
-    return request.headers.get("x-tokenwatch-project")
+    """Let users tag traffic via an X-Llmstat-Project header."""
+    return request.headers.get("x-llmstat-project")
 
 
 def _extract_usage(payload: dict) -> Optional[dict]:

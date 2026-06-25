@@ -6,7 +6,7 @@ import sqlite3
 import time
 from typing import Dict, List, Optional
 
-DEFAULT_DB_PATH = os.path.expanduser("~/.tokenwatch/usage.db")
+DEFAULT_DB_PATH = os.path.expanduser("~/.llmstat/usage.db")
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS requests (
