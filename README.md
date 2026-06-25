@@ -3,7 +3,6 @@
 # 👁️ llmstat
 
 [![PyPI](https://img.shields.io/pypi/v/llmstat.svg)](https://pypi.org/project/llmstat/)
-[![CI](https://github.com/camelyello-88/llmstat/actions/workflows/ci.yml/badge.svg)](https://github.com/camelyello-88/llmstat/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ### See what your LLM calls *actually* cost — in real time.
